@@ -1,0 +1,73 @@
+﻿@model ArmyTech.ViewModels.InvoiceViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>InvoiceHeader</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.invoiceHeader.CustomerName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.invoiceHeader.CustomerName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.invoiceHeader.Invoicedate)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.invoiceHeader.Invoicedate)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.invoiceHeader.Cashier)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.invoiceHeader.CashierID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.invoiceHeader.Branch)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.invoiceHeader.BranchID)
+        </dd>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>ItemName</th>
+                    <th>ItemCount</th>
+                    <th>ItemPrice</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detail in Model.invoiceDetails)
+                {
+                    <tr>
+                        <td>@detail.ItemName</td>
+                        <td>@detail.ItemCount</td>
+                        <td>@detail.ItemPrice LE</td>
+                   
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+        <table class="table table-bordered table-hover">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TotalPrice) LE
+        </dd>
+        </table>
+      
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Back", "Index", "Invoices", null)
+</div>

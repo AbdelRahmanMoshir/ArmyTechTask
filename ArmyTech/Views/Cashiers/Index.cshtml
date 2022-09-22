@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ArmyTech.Data.Entities.Cashier>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<p>
+    @Html.ActionLink("Create New", "New", "Cashiers", null)
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CashierName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Branch)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CashierName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Branch.BranchName)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "Edit", "Cashiers", new { id = item.ID }, null) |
+                    @Html.ActionLink("Details", "Details", "Cashiers", new { id = item.ID }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Cashiers", new { id = item.ID }, null)
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
